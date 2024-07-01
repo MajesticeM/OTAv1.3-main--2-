@@ -1,0 +1,14 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /OTAv1.3/
+
+    # Allow any files or directories that exist to be displayed directly
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # Rewrite all other URLs to index.php/URL
+    # Allow direct access to image files
+    RewriteRule ^(.+\.(jpg|jpeg|gif|png|bmp))$ $1 [L,NC]
+
+    RewriteRule ^ index.php [L]
+</IfModule>
